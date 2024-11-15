@@ -288,7 +288,8 @@ class Client extends EventEmitter {
             }
             // navigator.webdriver fix
             browserArgs.push('--disable-blink-features=AutomationControlled');
-
+            browserArgs.push('--no-sandbox');
+            browserArgs.push('--disable-setuid-sandbox');
             browser = await puppeteer.launch({...puppeteerOpts, args: browserArgs});
             page = (await browser.pages())[0];
         }
